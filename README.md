@@ -194,7 +194,7 @@ const config = {
       nestElements: {
         'swiper': 2,
         'swiper-item': 2
-      }，
+      },
       // function：直接修改 nestElements
       nestElements (origin) {
         // 现在 van-image 只能循环一次了
