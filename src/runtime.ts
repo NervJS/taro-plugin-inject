@@ -10,7 +10,8 @@ const hostConfig = {
     const global = taro.miniGlobal
     processApis(taro, global, {
       noPromiseApis,
-      needPromiseApis
+      needPromiseApis,
+      isOnlyPromisify: true
     })
   }
 }
