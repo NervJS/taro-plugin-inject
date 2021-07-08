@@ -205,3 +205,34 @@ const config = {
   ]
 }
 ```
+
+### 模块补充
+
+在前面的 components 示例中，给Text组件添加了新属性x-props后，@tarojs/components的类型文件中没有新定义的属性，typescript无法识别Text组件的x-props属性，导致vscode提示属性不存在，可以通过[模块补充](https://docs.taro.zone/docs/platform-plugin-how#%E7%B1%BB%E5%9E%8B)的方式来修正
+
+```typescript
+//tsconfig.json
+{
+  "compilerOptions": {
+     "typeRoots": ["src/global.d.ts"],
+   }
+}
+
+//global.d.ts 
+declare module '@tarojs/components' {
+  export * from '@tarojs/components/types/index';
+  
+  ////下面示例是react的定义，vue下可能有所不同,原理是一样的
+  import { ComponentType } from 'react';
+  import { TextProps as OldTextProps } from '@tarojs/components/types/Text';
+
+  //修改的Props
+  interface TextProps extends OldTextProps {
+     xProps?: string;
+  }
+
+  declare const Text: ComponentType<TextProps>;
+
+  export { Text, TextProps };
+}
+```
