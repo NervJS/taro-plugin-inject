@@ -11,7 +11,7 @@ const hostConfig = {
     processApis(taro, global, {
       noPromiseApis,
       needPromiseApis,
-      isOnlyPromisify: true
+      isOnlyPromisify: false
     })
   }
 }
