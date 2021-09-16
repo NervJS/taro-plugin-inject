@@ -2,6 +2,16 @@
 
 > 可以为小程序平台注入公共的组件、API 等逻辑
 
+## 版本要求
+
+### Taro 3.3+
+
+请使用本插件的 `1.0` 或以上版本
+
+### Taro 3.1/3.2
+
+请使用本插件的 `0.0.2` 或以上版本
+
 ## 安装
 
 在 Taro 项目根目录下安装
@@ -42,7 +52,10 @@ const config = {
 | voidComponents | array, function | 设置组件是否可以渲染子元素 |
 | nestElements | object, function | 设置组件模版的循环次数 |
 
-### syncApis
+#### 1. syncApis
+
+> Deprecated
+> v1.0.0+ 不再需要此属性
 
 插件支持为小程序新增**同步的** API。
 
@@ -65,7 +78,7 @@ const config = {
 Taro.a()
 ```
 
-### asyncApis
+#### 2. asyncApis
 
 插件支持为小程序新增**异步的** API。
 
@@ -90,7 +103,7 @@ Taro.b()
   .catch(() => {})
 ```
 
-### components
+#### 3. components
 
 插件支持为小程序的组件**修改属性默认值**或**新增属性**。
 
@@ -114,7 +127,7 @@ const config = {
 }
 ```
 
-### voidComponents
+#### 4. voidComponents
 
 在 `voidComponents` 里的组件**不可以渲染子组件**。
 
@@ -156,7 +169,7 @@ const config = {
 }
 ```
 
-### nestElements
+#### 5. nestElements
 
 对于不支持模板递归的小程序（如微信、QQ、京东小程序），Taro3 默认下述组件的模板能递归自身：
 
@@ -236,3 +249,28 @@ declare module '@tarojs/components' {
   export { Text, TextProps };
 }
 ```
+
+
+## License
+
+MIT License
+
+Copyright (c) O2Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
