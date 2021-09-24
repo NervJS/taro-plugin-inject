@@ -244,7 +244,7 @@ declare module '@tarojs/components' {
      xProps?: string;
   }
 
-  declare const Text: ComponentType<TextProps>;
+  const Text: ComponentType<TextProps>;
 
   export { Text, TextProps };
 }
