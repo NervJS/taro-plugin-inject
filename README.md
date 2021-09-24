@@ -231,22 +231,20 @@ const config = {
    }
 }
 
-//global.d.ts 
+// global.d.ts 
 declare module '@tarojs/components' {
   export * from '@tarojs/components/types/index';
   
-  ////下面示例是react的定义，vue下可能有所不同,原理是一样的
+  // 下面示例是react的定义，vue下可能有所不同,原理是一样的
   import { ComponentType } from 'react';
   import { TextProps as OldTextProps } from '@tarojs/components/types/Text';
 
-  //修改的Props
+  // 修改的Props
   interface TextProps extends OldTextProps {
-     xProps?: string;
+    xProps?: string;
   }
 
-  const Text: ComponentType<TextProps>;
-
-  export { Text, TextProps };
+  export const Text: ComponentType<TextProps>;
 }
 ```
 
