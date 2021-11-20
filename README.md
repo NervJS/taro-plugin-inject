@@ -120,7 +120,18 @@ const config = {
         Text: {
           'x-props': "'hello'",
           bindYEvent: ''
+        },
+        // 新增一个组件
+        ShareElement: {
+          key: "",
+          transform: "true",
+          duration: "300",
+          "easing-function": ""
         }
+      },
+      // 新增的组件需要写映射
+      componentsMap: {
+        ShareElement: 'share-element'
       }
     }]
   ]
