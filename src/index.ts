@@ -46,13 +46,16 @@ export default (ctx: IPluginContext, options: IOptions) => {
         template.nestElements = nestElements(template.nestElements)
       }
 
-      if (components || syncApis || asyncApis) {
+      if (components || syncApis || asyncApis || componentsMap) {
         injectRuntimePath(platform)
 
         if (components) {
           template.mergeComponents(ctx, components)
+        }
+
+        if (componentsMap) {
           injectComponentsReact(fs, platform.taroComponentsPath, componentsMap)
-          platform.taroComponentsPath = `@tarojs/plugin-inject/dist/components-react.js`
+          platform.taroComponentsPath = `@tarojs/plugin-inject/dist/components-react`
         }
 
         injectComponents(fs, components)
