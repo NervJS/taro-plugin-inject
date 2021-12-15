@@ -16,7 +16,8 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "skipLibCheck": true
   },
   "include": [
     "./src"
