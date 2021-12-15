@@ -49,6 +49,7 @@ const config = {
 | syncApis | array | 新增同步 API |
 | asyncApis | array | 新增异步 API |
 | components | object | 修改、新增组件的属性 |
+| componentsMap | object | 新增组件时的名称映射 |
 | voidComponents | array, function | 设置组件是否可以渲染子元素 |
 | nestElements | object, function | 设置组件模版的循环次数 |
 
@@ -120,7 +121,18 @@ const config = {
         Text: {
           'x-props': "'hello'",
           bindYEvent: ''
+        },
+        // 新增一个组件
+        ShareElement: {
+          key: "",
+          transform: "true",
+          duration: "300",
+          "easing-function": ""
         }
+      },
+      // 新增的组件需要写映射
+      componentsMap: {
+        ShareElement: 'share-element'
       }
     }]
   ]
