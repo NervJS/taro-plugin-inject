@@ -139,6 +139,29 @@ const config = {
 }
 ```
 
+新增事件属性：
+> 新增一个事件属性有两种方式，一种是像上面例子那样属性以`bind`开头，一种是像下面例子这样将属性值设为`eh` [查看详细PR](https://github.com/NervJS/taro/pull/11478)
+```js
+const config = {
+  plugins: [
+    [
+      '@tarojs/plugin-inject',
+      {
+        components: {
+          // 新增一个 'CustomComponent' 事件并支持 'catchtouchend' 事件
+          CustomComponent: {
+            catchtouchend: 'eh',
+          },
+        },
+        componentsMap: {
+          CustomComponent: 'custom-component',
+        },
+      },
+    ],
+  ],
+}
+```
+
 #### 4. voidComponents
 
 在 `voidComponents` 里的组件**不可以渲染子组件**。
