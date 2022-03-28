@@ -148,7 +148,7 @@ const config = {
       '@tarojs/plugin-inject',
       {
         components: {
-          // 新增一个 'CustomComponent' 事件并支持 'catchtouchend' 事件
+          // 新增一个 'CustomComponent' 组件并支持 'catchtouchend' 事件
           CustomComponent: {
             catchtouchend: 'eh',
           },
