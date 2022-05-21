@@ -52,6 +52,7 @@ const config = {
 | componentsMap | object | 新增组件时的名称映射 |
 | voidComponents | array, function | 设置组件是否可以渲染子元素 |
 | nestElements | object, function | 设置组件模版的循环次数 |
+| thirdPartyComponents | object | 设置第三方自定义组件的属性的默认值 |
 
 #### 1. syncApis
 
@@ -249,6 +250,44 @@ const config = {
         origin.set('van-image', 1)
         return origin
       },
+    }]
+  ]
+}
+```
+
+#### 6. thirdPartyComponents
+
+> v1.0.2+ 开始支持，且需要 Taro v3.4.10+
+
+在默认情况下，第三方自定义组件的属性会被编译为形如：`<van-empty image="{{i.image}}" />`。
+
+这时自定义组件声明的默认值会失效（详情请浏览 [#11575](https://github.com/NervJS/taro/issues/11575)）。
+
+```js
+Component({
+  props: {
+    image: {
+      type: String,
+      value: 'default'
+    }
+  }
+})
+```
+
+所以我们需要为此属性增加默认值，把它编译为形如：`<van-empty image="{{i.image===undefined?'default':i.image}}" />`。
+
+用法：
+
+```js
+const config = {
+  plugins: [
+    ['@tarojs/plugin-inject', {
+      thirdPartyComponents: {
+        // 为 `van-empty` 组件的 image 属性设置默认值 'default'
+        'van-empty': {
+          'image': "'default'"
+        }
+      }
     }]
   ]
 }

@@ -13,6 +13,7 @@ interface IOptions {
   componentsMap: Record<string, string>
   syncApis: string[]
   asyncApis: string[]
+  thirdPartyComponents: Record<string, Record<string, any>>
 }
 
 export default (ctx: IPluginContext, options: IOptions) => {
@@ -27,7 +28,8 @@ export default (ctx: IPluginContext, options: IOptions) => {
         components,
         syncApis,
         asyncApis,
-        componentsMap
+        componentsMap,
+        thirdPartyComponents
       } = options
 
       const template = platform.template
@@ -60,6 +62,10 @@ export default (ctx: IPluginContext, options: IOptions) => {
 
         injectComponents(fs, components)
         injectApis(fs, syncApis, asyncApis)
+      }
+
+      if (thirdPartyComponents) {
+        template.mergeThirdPartyComponents(thirdPartyComponents)
       }
     }
   })
